@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- Envie sua foto para o repositório do GitHub, na mesma pasta do index.html, e coloque aqui o nome exato do arquivo (exemplo: foto.jpg ou foto.png). Também funciona com um link de imagem. -->
+    <script>
+        const foto = "foto.jpg";
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jenyfher Allersdorfer Brandão | Ciência da Computação</title>
+    <meta name="description" content="Estudante de Ciência da Computação com foco em Dados, IA e Cibersegurança. Busco oportunidades de estágio e freelas.">
+    
+    <!-- Open Graph para LinkedIn -->
+    <meta property="og:title" content="Jenyfher Allersdorfer Brandão | Portfólio">
+    <meta property="og:description" content="Ciência da Computação | Foco em Dados e Inteligência Artificial">
+    <meta property="og:type" content="website">
+
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Ícones (Lucide) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        :root {
+            /* Troque as cores do site aqui */
+            --cor-fundo: #070913; 
+            --cor-superficie: rgba(17, 20, 36, 0.65); 
+            --cor-texto: #E2E8F0; 
+            --cor-texto-suave: #94A3B8;
+            --cor-destaque: #581C87; /* Roxo escuro */
+            --cor-destaque-claro: #7E22CE; /* Roxo mais vivo para hover */
+            --cor-borda: rgba(30, 41, 59, 0.8);
+            --cor-azul-marinho: #0F172A;
+            --cor-fundo-gradiente: radial-gradient(circle at 85% 15%, #2e1065 0%, #1e1b4b 25%, #070913 80%);
+            --cor-gradiente-texto: linear-gradient(135deg, #a855f7, #60a5fa);
+            --cor-sombra-btn: rgba(88, 28, 135, 0.4);
+        }
+
+        [data-theme="claro"] {
+            --cor-fundo: #F8FAFC;
+            --cor-superficie: rgba(255, 255, 255, 0.6);
+            --cor-texto: #0F172A;
+            --cor-texto-suave: #475569;
+            --cor-destaque: #6D28D9;
+            --cor-destaque-claro: #5B21B6;
+            --cor-borda: rgba(203, 213, 225, 0.6);
+            --cor-azul-marinho: #DBEAFE;
+            --cor-fundo-gradiente: radial-gradient(circle at 85% 15%, #f3e8ff 0%, #e0e7ff 30%, #f8fafc 80%);
+            --cor-gradiente-texto: linear-gradient(135deg, #6d28d9, #2563eb);
+            --cor-sombra-btn: rgba(109, 40, 217, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--cor-fundo);
+            background-image: var(--cor-fundo-gradiente);
+            background-attachment: fixed;
+            color: var(--cor-texto);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        h1, h2, h3, h4, .fonte-mono {
+            font-family: 'Space Mono', monospace;
+        }
+
+        a {
+            color: var(--cor-texto);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        a:hover, a:focus {
+            color: var(--cor-destaque-claro);
+            outline: none;
+        }
+
+        a:focus-visible, button:focus-visible {
+            outline: 2px dashed var(--cor-destaque-claro);
+            outline-offset: 4px;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        section {
+            padding: 96px 0;
+        }
+
+        .titulo-secao {
+            font-size: 2rem;
+            margin-bottom: 48px;
+            color: var(--cor-texto);
+            position: relative;
+            display: inline-block;
+        }
+
+        .titulo-secao::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 50%;
+            height: 2px;
+            background-color: var(--cor-destaque);
+        }
+
+        /* Menu */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(17, 20, 36, 0.8);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--cor-borda);
+            z-index: 1000;
+        }
+
+        [data-theme="claro"] header {
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 72px;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.25rem;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .btn-tema {
+            background: none;
+            border: none;
+            color: var(--cor-texto);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px;
+            border-radius: 8px;
+        }
+
+        .btn-tema:hover {
+            background-color: var(--cor-superficie);
+        }
+
+        .menu-mobile-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--cor-texto);
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 72px;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 64px;
+            width: 100%;
+        }
+
+        .hero-texto {
+            flex: 1;
+        }
+
+        .hero-nome {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 16px;
+            font-weight: 700;
+            letter-spacing: -1px;
+            color: var(--cor-texto);
+            opacity: 0.85;
+        }
+
+        .hero-titulo {
+            font-size: 1.25rem;
+            color: var(--cor-texto-suave);
+            margin-bottom: 24px;
+        }
+
+        .hero-descricao {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin-bottom: 40px;
+            color: var(--cor-texto-suave);
+        }
+
+        .hero-botoes {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: background-color 0.2s, border-color 0.2s, transform 0.1s;
+            min-height: 44px;
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn-principal {
+            background-color: var(--cor-destaque);
+            color: #fff;
+            border: 1px solid var(--cor-destaque);
+            box-shadow: 0 4px 14px var(--cor-sombra-btn);
+        }
+
+        .btn-principal:hover {
+            background-color: var(--cor-destaque-claro);
+            color: #fff;
+            border-color: var(--cor-destaque-claro);
+        }
+
+        .btn-secundario {
+            background-color: transparent;
+            color: var(--cor-texto);
+            border: 1px solid var(--cor-borda);
+        }
+
+        .btn-secundario:hover {
+            border-color: var(--cor-texto-suave);
+        }
+
+        .hero-redes {
+            display: flex;
+            gap: 16px;
+        }
+
+        .hero-redes a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 8px;
+            background-color: var(--cor-superficie);
+            border: 1px solid var(--cor-borda);
+            color: var(--cor-texto-suave);
+        }
+
+        .hero-redes a:hover {
+            color: var(--cor-destaque-claro);
+            border-color: var(--cor-destaque-claro);
+        }
+
+        .hero-foto-container {
+            flex-shrink: 0;
+        }
+
+        .foto-perfil, .foto-placeholder {
+            width: 320px;
+            height: 320px;
+            border-radius: 24px;
+            object-fit: cover;
+            border: 2px solid var(--cor-borda);
+            background-color: var(--cor-superficie);
+        }
+
+        .foto-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--cor-texto-suave);
+            font-family: 'Space Mono', monospace;
+        }
+
+        /* Sobre */
+        .sobre-texto {
+            max-width: 800px;
+            font-size: 1.1rem;
+            color: var(--cor-texto-suave);
+        }
+
+        .sobre-texto p {
+            margin-bottom: 24px;
+        }
+
+        /* Habilidades */
+        .grid-habilidades {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 32px;
+        }
+
+        .card-habilidade {
+            background-color: var(--cor-superficie);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 32px;
+            border-radius: 16px;
+            border: 1px solid var(--cor-borda);
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .card-habilidade:hover {
+            transform: translateY(-4px);
+            border-color: var(--cor-destaque-claro);
+        }
+
+        .card-habilidade h3 {
+            font-size: 1.1rem;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .lista-skills li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--cor-borda);
+            font-size: 0.95rem;
+        }
+
+        .lista-skills li:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .skill-nivel {
+            font-size: 0.8rem;
+            color: var(--cor-texto-suave);
+            background-color: var(--cor-fundo);
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        /* Projetos */
+        .grid-projetos {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 32px;
+        }
+
+        .card-projeto {
+            background-color: var(--cor-superficie);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--cor-borda);
+            border-radius: 16px;
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s, border-color 0.2s;
+            height: 100%;
+        }
+
+        .card-projeto:hover {
+            transform: translateY(-4px);
+            border-color: var(--cor-destaque-claro);
+        }
+
+        .projeto-titulo {
+            font-size: 1.25rem;
+            margin-bottom: 16px;
+        }
+
+        .projeto-desc {
+            color: var(--cor-texto-suave);
+            font-size: 0.95rem;
+            margin-bottom: 24px;
+            flex-grow: 1;
+        }
+
+        .projeto-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            padding: 4px 12px;
+            background-color: rgba(109, 40, 217, 0.1);
+            color: var(--cor-texto);
+            border: 1px solid var(--cor-destaque);
+            border-radius: 100px;
+            font-family: 'Space Mono', monospace;
+        }
+
+        /* Experiência / Linha do Tempo */
+        .timeline {
+            max-width: 800px;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background-color: var(--cor-borda);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 64px;
+            margin-bottom: 48px;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 12px;
+            top: 4px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background-color: var(--cor-destaque);
+            border: 4px solid var(--cor-fundo);
+        }
+
+        .timeline-data {
+            font-size: 0.85rem;
+            color: var(--cor-destaque-claro);
+            font-family: 'Space Mono', monospace;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .timeline-titulo {
+            font-size: 1.2rem;
+            margin-bottom: 4px;
+        }
+
+        .timeline-local {
+            font-size: 0.95rem;
+            color: var(--cor-texto-suave);
+            margin-bottom: 16px;
+        }
+
+        .timeline-desc {
+            font-size: 0.95rem;
+            color: var(--cor-texto-suave);
+        }
+
+        /* Footer / Contato */
+        footer {
+            border-top: 1px solid var(--cor-borda);
+            padding: 64px 0 32px;
+            background-color: var(--cor-superficie);
+        }
+
+        .contato-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .contato-container h2 {
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+
+        .contato-container p {
+            color: var(--cor-texto-suave);
+            margin-bottom: 32px;
+            max-width: 500px;
+        }
+
+        .rodape-creditos {
+            text-align: center;
+            color: var(--cor-texto-suave);
+            font-size: 0.85rem;
+        }
+
+        /* Animações e Utils */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in.visivel {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .fade-in {
+                transition: none;
+                opacity: 1;
+                transform: none;
+            }
+            .btn {
+                transition: none;
+            }
+        }
+
+        /* Responsivo */
+        @media (max-width: 900px) {
+            .hero-content {
+                flex-direction: column-reverse;
+                text-align: center;
+                gap: 40px;
+            }
+            
+            .hero-nome {
+                font-size: 2.5rem;
+            }
+
+            .hero-botoes, .hero-redes {
+                justify-content: center;
+            }
+
+            .foto-perfil, .foto-placeholder {
+                width: 240px;
+                height: 240px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-mobile-btn {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 72px;
+                left: 0;
+                width: 100%;
+                background-color: var(--cor-superficie);
+                flex-direction: column;
+                padding: 24px;
+                gap: 24px;
+                border-bottom: 1px solid var(--cor-borda);
+            }
+
+            .nav-links.ativo {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo fonte-mono">JAB.</a>
+            
+            <nav class="nav-links" id="menu-links">
+                <a href="#sobre">Sobre</a>
+                <a href="#habilidades">Habilidades</a>
+                <a href="#projetos">Projetos</a>
+                <a href="#experiencia">Experiência</a>
+                <a href="#formacao">Formação</a>
+                <button class="btn-tema" id="btn-tema" aria-label="Alternar tema">
+                    <i data-lucide="sun"></i>
+                </button>
+            </nav>
+
+            <button class="menu-mobile-btn" id="btn-mobile" aria-label="Abrir menu">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section class="hero container" id="inicio">
+            <div class="hero-content">
+                <div class="hero-texto fade-in">
+                    <h1 class="hero-nome">Jenyfher <br>Allersdorfer Brandão</h1>
+                    <p class="hero-titulo fonte-mono">Ciência da Computação | Foco em Dados e Inteligência Artificial</p>
+                    <p class="hero-descricao">Estudante investigativa e organizada, buscando aplicar raciocínio lógico em oportunidades de freelas e estágio nas áreas de Dados, IA e Cibersegurança.</p>
+                    
+                    <div class="hero-botoes">
+                        <a href="#projetos" class="btn btn-principal">Ver projetos</a>
+                        <a href="mailto:jenyfherallerdorfer@gmail.com" class="btn btn-secundario">Entrar em contato</a>
+                    </div>
+
+                    <div class="hero-redes">
+                        <a href="https://www.linkedin.com/in/jenyfher-a-5a4476375/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                            <i data-lucide="linkedin"></i>
+                        </a>
+                        <a href="https://github.com/JenyAllersdorfer" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                            <i data-lucide="github"></i>
+                        </a>
+                        <a href="http://lattes.cnpq.br/2263932303207248" target="_blank" rel="noopener noreferrer" aria-label="Lattes">
+                            <i data-lucide="book-open"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-foto-container fade-in">
+                    <img id="profile-img" alt="Jenyfher Allersdorfer Brandão" class="foto-perfil">
+                    <script>
+                        // Lógica para carregar a foto ou o placeholder com as iniciais
+                        const imgEl = document.getElementById('profile-img');
+                        if (foto && foto !== "") {
+                            imgEl.src = foto;
+                        } else {
+                            imgEl.outerHTML = '<div class="foto-placeholder">JAB</div>';
+                        }
+                        imgEl.onerror = function() {
+                            this.outerHTML = '<div class="foto-placeholder">JAB</div>';
+                        }
+                    </script>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sobre -->
+        <section id="sobre" class="container">
+            <h2 class="titulo-secao fade-in">Sobre mim</h2>
+            <div class="sobre-texto fade-in">
+                <p>Sempre gostei de raciocínio lógico. Desde pequena me envolvi com quebra-cabeças, caça-palavras e jogos de tabuleiro. Essa curiosidade logo se estendeu aos jogos de PC e ao interesse em entender as "maracutaias" da informação para descobrir como as mecânicas dos sistemas são feitas por baixo dos panos.</p>
+                <p>Atualmente curso o 4º semestre de Ciência da Computação na UFMT. Sou extremamente organizada, responsável e investigativa — a ponto de aprender coisas pelo simples desejo de entender o funcionamento. Embora seja focada em tarefas lógicas, venci a timidez através de cursos de comunicação, o que me tornou uma excelente comunicadora para lidar com equipes e resolver problemas.</p>
+                <p>Meu foco atual é mergulhar na estruturação de dados e Inteligência Artificial, visando oportunidades de estágio e demandas como freelancer.</p>
+            </div>
+        </section>
+
+        <!-- Habilidades -->
+        <section id="habilidades" class="container">
+            <h2 class="titulo-secao fade-in">Habilidades</h2>
+            
+            <div class="grid-habilidades fade-in">
+                <div class="card-habilidade">
+                    <h3><i data-lucide="terminal"></i> Técnicas e Ferramentas</h3>
+                    <ul class="lista-skills">
+                        <li><span>Excel / Análise de Dados</span> <span class="skill-nivel">Intermediário</span></li>
+                        <li><span>Java (POO)</span> <span class="skill-nivel">Básico</span></li>
+                        <li><span>GitHub</span> <span class="skill-nivel">Intermediário</span></li>
+                        <li><span>Obsidian (Gestão do Conhecimento)</span> <span class="skill-nivel">Avançado</span></li>
+                    </ul>
+                </div>
+
+                <div class="card-habilidade">
+                    <h3><i data-lucide="globe"></i> Idiomas</h3>
+                    <ul class="lista-skills">
+                        <li><span>Português</span> <span class="skill-nivel">Nativo</span></li>
+                        <li><span>Inglês</span> <span class="skill-nivel">Intermediário</span></li>
+                        <li><span>Alemão</span> <span class="skill-nivel">Iniciante</span></li>
+                    </ul>
+                </div>
+
+                <div class="card-habilidade">
+                    <h3><i data-lucide="user"></i> Comportamentais</h3>
+                    <ul class="lista-skills">
+                        <li><span>Comunicação Clara</span> <span class="skill-nivel">Forte</span></li>
+                        <li><span>Resolução de Problemas / Autonomia</span> <span class="skill-nivel">Forte</span></li>
+                        <li><span>Organização</span> <span class="skill-nivel">Forte</span></li>
+                        <li><span>Curiosidade Investigativa</span> <span class="skill-nivel">Forte</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projetos -->
+        <section id="projetos" class="container">
+            <h2 class="titulo-secao fade-in">Projetos</h2>
+            
+            <div class="grid-projetos">
+                <!-- Projeto 1 -->
+                <div class="card-projeto fade-in">
+                    <h3 class="projeto-titulo">Curadoria de Dados - Lumina IA</h3>
+                    <p class="projeto-desc">Atuação na organização, engenharia e curadoria de dados acadêmicos para alimentar uma Inteligência Artificial generativa do site ELLAS. O foco é tratar dados abertos sobre desigualdade de gênero em STEM para evitar alucinações algorítmicas no chatbot.</p>
+                    <div class="projeto-tags">
+                        <span class="tag">Dados</span>
+                        <span class="tag">IA Generativa</span>
+                        <span class="tag">Pesquisa</span>
+                    </div>
+                </div>
+
+                <!-- Projeto 2 -->
+                <div class="card-projeto fade-in">
+                    <h3 class="projeto-titulo">Planilha Financeira Dinâmica</h3>
+                    <p class="projeto-desc">Construção de uma ferramenta completa de finanças pessoais utilizando Excel, estruturando dados brutos em gráficos dinâmicos e tabelas organizadas para análise financeira precisa.</p>
+                    <div class="projeto-tags">
+                        <span class="tag">Excel</span>
+                        <span class="tag">Análise de Dados</span>
+                    </div>
+                </div>
+
+                <!-- Projeto 3 -->
+                <div class="card-projeto fade-in">
+                    <h3 class="projeto-titulo">Segundo Cérebro (Obsidian + GitHub)</h3>
+                    <p class="projeto-desc">Estruturação de um ambiente de gestão do conhecimento associado ao GitHub. Centraliza todo o material de estudo da UFMT e anotações independentes sobre Excel, Cibersegurança e Dados.</p>
+                    <div class="projeto-tags">
+                        <span class="tag">Obsidian</span>
+                        <span class="tag">GitHub</span>
+                        <span class="tag">Markdown</span>
+                    </div>
+                </div>
+
+                <!-- Projeto 4 -->
+                <div class="card-projeto fade-in">
+                    <h3 class="projeto-titulo">Gerenciamento de Academia</h3>
+                    <p class="projeto-desc">Desenvolvimento de um sistema computacional focado em gerenciar operações e cadastros de uma academia de bairro, construído durante a disciplina de Programação Orientada a Objetos.</p>
+                    <div class="projeto-tags">
+                        <span class="tag">Java</span>
+                        <span class="tag">POO</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experiência -->
+        <section id="experiencia" class="container">
+            <h2 class="titulo-secao fade-in">Experiência e Atividades</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <span class="timeline-data">Atual</span>
+                    <h3 class="timeline-titulo">Iniciação Científica (PIBIC CNPq)</h3>
+                    <p class="timeline-local">Projeto Lumina / ELLAS (UFMT)</p>
+                    <p class="timeline-desc">Pesquisa voltada à curadoria e estruturação de bases de dados acadêmicos para alimentar uma Inteligência Artificial generativa. O trabalho envolve garantir a qualidade dos dados para mitigar respostas incorretas da IA sobre a inclusão feminina em STEM. Atuei também na apresentação de banner e sou coautora em artigos acadêmicos do projeto.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Formação -->
+        <section id="formacao" class="container">
+            <h2 class="titulo-secao fade-in">Formação</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <span class="timeline-data">Jan/2029 (Previsão)</span>
+                    <h3 class="timeline-titulo">Ciência da Computação</h3>
+                    <p class="timeline-local">Universidade Federal de Mato Grosso (UFMT) - Cuiabá, MT</p>
+                    <p class="timeline-desc">Estudante do 4º semestre. Desenvolvimento de base técnica em lógica, estruturas de dados e programação orientada a objetos.</p>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <span class="timeline-data">Formação Complementar</span>
+                    <h3 class="timeline-titulo">Cursos Diversos</h3>
+                    <p class="timeline-desc">Comunicação e apresentação (vencendo a timidez), Informática Básica (Pacote Office e Adobe), Digitação e exploração inicial de Cibersegurança.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contato">
+        <div class="container">
+            <div class="contato-container fade-in">
+                <h2>Vamos trabalhar juntos?</h2>
+                <p>Estou em busca de oportunidades de estágio e projetos como freelancer na área de dados. Fique à vontade para me mandar um e-mail ou conectar no LinkedIn.</p>
+                
+                <a href="mailto:jenyfherallerdorfer@gmail.com" class="btn btn-principal" style="margin-bottom: 32px;">
+                    <i data-lucide="mail" style="margin-right: 8px; width: 18px;"></i> jenyfherallerdorfer@gmail.com
+                </a>
+                
+                <div class="hero-redes">
+                    <a href="https://www.linkedin.com/in/jenyfher-a-5a4476375/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <i data-lucide="linkedin"></i>
+                    </a>
+                    <a href="https://github.com/JenyAllersdorfer" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        <i data-lucide="github"></i>
+                    </a>
+                    <a href="http://lattes.cnpq.br/2263932303207248" target="_blank" rel="noopener noreferrer" aria-label="Lattes">
+                        <i data-lucide="book-open"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <p class="rodape-creditos">© 2026 Jenyfher Allersdorfer Brandão. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Inicializar ícones
+        lucide.createIcons();
+
+        // Alternância de Tema
+        const btnTema = document.getElementById('btn-tema');
+        
+        btnTema.addEventListener('click', () => {
+            const currentTheme = document.body.getAttribute('data-theme');
+            if (currentTheme === 'claro') {
+                document.body.removeAttribute('data-theme');
+                btnTema.innerHTML = '<i data-lucide="sun"></i>';
+            } else {
+                document.body.setAttribute('data-theme', 'claro');
+                btnTema.innerHTML = '<i data-lucide="moon"></i>';
+            }
+            lucide.createIcons();
+        });
+
+        // Menu Mobile
+        const btnMobile = document.getElementById('btn-mobile');
+        const menuLinks = document.getElementById('menu-links');
+        
+        btnMobile.addEventListener('click', () => {
+            menuLinks.classList.toggle('ativo');
+            const isOpen = menuLinks.classList.contains('ativo');
+            btnMobile.innerHTML = `<i data-lucide="${isOpen ? 'x' : 'menu'}"></i>`;
+            lucide.createIcons();
+        });
+
+        // Fechar menu mobile ao clicar em um link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if(window.innerWidth <= 768) {
+                    menuLinks.classList.remove('ativo');
+                    btnMobile.innerHTML = '<i data-lucide="menu"></i>';
+                    lucide.createIcons();
+                }
+            });
+        });
+
+        // Animação de Scroll (Fade in)
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visivel');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>
